@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script >
+       const firebaseConfig = {
+    apiKey: "AIzaSyC0f5Dq9guw-aWRrVwiSvlMpO9vaFPHocs",
+    authDomain: "esportzcommunity.firebaseapp.com",
+    databaseURL: "https://esportzcommunity-default-rtdb.firebaseio.com",
+    projectId: "esportzcommunity",
+    storageBucket: "esportzcommunity.appspot.com",
+    messagingSenderId: "836432363630",
+    appId: "1:836432363630:web:9f2cf3108665edb14e267f",
+    
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  //this prints whole table data
+//   var ref = firebase.database().ref();
+
+// ref.on("value", function(snapshot) {
+//    console.log(snapshot.val());
+// }, function (error) {
+//    console.log("Error: " + error.code);
+// });
+
+//this prints teams names
+// var playersRef = firebase.database().ref("/");
+
+// playersRef.orderByKey().on("child_added", function(data) {
+//    console.log(data.key);
+// });
+ 
+// document.getElementById("consoleprint").innerHTML = data.key ;
+//this 
+var ratingRef = firebase.database().ref("/");
+
+ratingRef.orderByValue().on("value", function(data) {
+   var i=1;
+   document.write("<h3>TEAMS NAME</h1><ol>");
+   data.forEach(function(data) {
+
+      document.write("<li>" +"&nbsp" + data.key + "</li>");
+   });
+   document.write("</ol>");
+});
+  // function addItemsToList(name,name1){
+  //   var ul=document.getElementById('teamname');
+  //   var header=document.createElement('h2');
+  //   var name=document.createElement('li');
+  //   header.innerHTML=ul;
+  //   name.innerHTML='name:'+name;
+
+  //   ul.appendChild(header);
+  //   ul.appendChild(name);
+  // }
+  // function fetchAllData(){
+  //   firebase.database().ref('/').once('value',function(snapshot){
+  //       snapshot.forEach(
+  //           function(ChildSnapshot){
+  //        let name = ChildSnapshot.val().Name;
+  //        addItemsToList(name);
+  //           }
+  //       );
+  //   });
+  // } 
+  // window.onload(fetchAllData());
+    </script>
+  
+</body>
+</html>
